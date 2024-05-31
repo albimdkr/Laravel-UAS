@@ -5,9 +5,9 @@ use App\Http\Controllers\AuthController;
 
 // Default Route
 Route::get('/', function(){
-    return view('Welcome', ["title" => "Welcome"]);
+    return view('welcome', ['title' => 'Welcome']);
 });
 
 // Routing to other page
-Route::resource('/signin', AuthController::class);
-Route::resource('/signup', AuthController::class);
+Route::get('/signin', [AuthController::class, 'signin']);
+Route::get('/signup', [AuthController::class, 'signup']);

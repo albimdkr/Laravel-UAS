@@ -11,10 +11,19 @@ class AuthController extends Controller
      */
 
      public function index()
-    {
-        return view('signin', ['title' => 'Sigin']);
-        return view('signup', ['title' => 'Signup']);
-    }
+     {
+         return view('welcome', ['title' => 'Welcome']);
+     }
+ 
+     public function signin()
+     {
+         return view('signin', ['title' => 'Signin']);
+     }
+ 
+     public function signup()
+     {
+         return view('signup', ['title' => 'Signup']);
+     }
 
     /**
      * Show the form for creating a new resource.
