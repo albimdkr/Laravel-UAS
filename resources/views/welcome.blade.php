@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<section class="bg-center bg-no-repeat bg-[url('https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg')] bg-gray-700 bg-blend-multiply w-full">
+<section class="bg-center bg-no-repeat bg-[url('https://juniper-prod.scene7.com/is/image/junipernetworks/AdobeStock_92564034?wid=945&dpr=off')] bg-gray-700 bg-blend-multiply w-full">
     <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Empowering Efficient Network Solutions</h1>
         <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Delivering clear and effective network troubleshooting to ensure seamless operations.</p>
