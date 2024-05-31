@@ -9,9 +9,11 @@ class AuthController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+     public function index()
     {
-        return view('layouts.main.blade.php');
+        return view('signin', ['title' => 'Sigin']);
+        return view('signup', ['title' => 'Signup']);
     }
 
     /**
