@@ -2,6 +2,7 @@
 
 @section('container')
 
+{{-- Feature --}}
 <h1 class="text-center text-xl m-5">FEATURE</h1>
 <div class="flex justify-center gap-5">
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
