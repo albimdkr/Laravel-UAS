@@ -1,10 +1,15 @@
 @extends('layouts.main')
 
 @section('container')
+{{-- About --}}
+<div class="text-center m-7">
+    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We invest in the <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">world’s potential</span></h1>
+    <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+</div>
+
 
 {{-- Feature --}}
-<h1 class="text-center text-xl m-5">FEATURE</h1>
-<div class="flex justify-center gap-5">
+<div class="flex justify-center gap-5 m-5">
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
           <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
@@ -61,4 +66,7 @@
 </div>
 
 
-@endsection
+  
+
+
+  @endsection
