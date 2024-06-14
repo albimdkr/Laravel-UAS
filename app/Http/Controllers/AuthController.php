@@ -9,11 +9,16 @@ class AuthController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function index()
+    {
+        return view('welcome', ['title' => 'Welcome']);
+    }
 
-     public function index()
+     public function about()
      {
-         return view('welcome', ['title' => 'Welcome']);
+         return view('about', ['title' => 'about']);
      }
+
  
      public function signin()
      {

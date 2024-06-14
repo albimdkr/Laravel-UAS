@@ -9,5 +9,6 @@ Route::get('/', function(){
 });
 
 // Routing to other page
-Route::get('/signin', [AuthController::class, 'signin']);
+Route::get('/about', [AuthController::class, 'about']);
 Route::get('/signup', [AuthController::class, 'signup']);
+Route::get('/signin', [AuthController::class, 'signin']);
