@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Welcome | E-Warehouse</title>
+        <title>Welcome | NET-TRACKER</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,7 +29,7 @@
         {{-- Navbar --}}
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">E-WAREHOUSE</a>
+                <a class="navbar-brand" href="#">NET-TRACKER</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,9 +38,6 @@
                 <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
                         <a class="nav-link mx-2" aria-current="page" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-2" href="#pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2" href="#contact">Contact</a>
@@ -57,18 +54,18 @@
         <div class="container py-8 mt-4">
             <div class="row flex-lg-row-reverse align-items-center g-5">
                 <div class="col-10 mx-auto col-sm-8 col-lg-6">
-                    <img class="img-fluid" src="{{ asset('admin_assets/img/undraw_logistics.svg') }}" width="" height="783" srcset="" sizes="" alt="">
+                    <img class="img-fluid" src="{{ asset('admin_assets/img/undraw_co-working.svg') }}" width="" height="783" srcset="" sizes="" alt="">
                 </div>
                 <div class="col-lg-6">
                     <div class="lc-block mb-3">
                         <div editable="rich">
-                            <h5 class="display-5 fw-bold">E-Warehouse <span class="text-primary">Management App</span></h5>
+                            <h5 class="display-5 fw-bold">NET-TRACKER <span class="text-primary">Management Network</span></h5>
                         </div>
                     </div>
     
                     <div class="lc-block mb-3">
                         <div editable="rich">
-                            <p class="lead paragraf">Simplicity & Efficiently Manage Your Warehouse</p>
+                            <p class="lead paragraf">Simplicity & Efficiently Manage & Tshoot Network</p>
                         </div>
                     </div>
     
@@ -115,7 +112,7 @@
         </div>
 
         {{-- About --}}
-        <div class="container py-6 py-5" id="about">
+        <div class="container py-15 py-5" id="about">
             <div class="row">
                 <div class="me-xl-auto col-xl-5">
                     <div class="lc-block mb-4">
@@ -168,12 +165,12 @@
         </div>
 
         {{-- Pricing --}}
-        <div class="container pb-5 py-5" id="pricing">
+        {{-- <div class="container pb-5 py-5" id="pricing">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="lc-block mb-4"><span editable="inline" class="small mt-4 d-block"></span>
                         <h2 class="display-5 fw-bold">Pricing</h2>
-                    </div><!-- /lc-block -->
+                    </div>
                 </div>
             </div>
             <div class="row mt-4 text-center">
@@ -247,7 +244,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Contact --}}
         <div class="container py-5" id="contact">
@@ -284,7 +281,7 @@
                             </div>
     
                             <div class="ms-3 align-self-center" editable="rich">
-                                <p class="lead">West Java, Bandung.</p>
+                                <p class="lead">Kalibata City, South Jakarta.</p>
                             </div>
                         </div>
                     </div><!-- /lc-block -->
@@ -299,7 +296,7 @@
                             </div>
     
                             <div class="ms-3 align-self-center" editable="rich">
-                                <p class="lead">bussiness@ewarehouse.com</p>
+                                <p class="lead">bussiness@nettracker.com</p>
                             </div>
                         </div>
                     </div><!-- /lc-block -->
@@ -313,7 +310,7 @@
                 <div class="lc-block d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                     <div class="col-md-4">
                         <div editable="rich">
-                            <p class="text-muted"> © 2024 E-Warehouse, Inc</p>
+                            <p class="text-muted"> © 2024 NET-TRACKER, Inc</p>
                         </div>
                     </div>
                     {{-- <div class="col-md-4 navbar-expand-md">
