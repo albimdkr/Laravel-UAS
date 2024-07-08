@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('contents')
 <div class="container">
     <h1 class="my-4">Edit Client</h1>
     <form action="{{ route('clients.update', $client->id) }}" method="POST">

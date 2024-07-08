@@ -1,13 +1,22 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <h1 class="my-4">Clients List</h1>
-    <a href="{{ route('clients.create') }}" class="btn btn-primary mb-3">Create New Client</a>
-    <table class="table table-striped">
-        <thead>
+@section('contents')
+    <div class="d-flex align-items-center justify-content-between">
+        <h1 class="h3 mb-0 text-gray-800">Clients List</h1>
+        <div>
+            <a href="{{ route('clients.create') }}" class="btn btn-success">Create New Client <i class="fas fa-plus"></i></a>
+        </div>
+    </div>
+    <hr />
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+    <table class="table table-hover">
+        <thead class="table-primary">
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Manage Scope</th>
@@ -18,26 +27,33 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($clients as $client)
+            @if($clients->count() > 0)
+                @foreach($clients as $client)
+                    <tr>
+                        <td class="align-middle">{{ $loop->iteration }}</td>
+                        <td class="align-middle">{{ $client->name }}</td>
+                        <td class="align-middle">{{ $client->email }}</td>
+                        <td class="align-middle">{{ $client->manage_scope }}</td>
+                        <td class="align-middle">{{ $client->contact_name }}</td>
+                        <td class="align-middle">{{ $client->contact_email }}</td>
+                        <td class="align-middle">{{ $client->contact_phone }}</td>
+                        <td class="align-middle">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a href="{{ route('clients.edit', $client->id) }}" type="button" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                <form action="{{ route('clients.destroy', $client->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger m-0"><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
                 <tr>
-                    <td>{{ $client->id }}</td>
-                    <td>{{ $client->name }}</td>
-                    <td>{{ $client->email }}</td>
-                    <td>{{ $client->manage_scope }}</td>
-                    <td>{{ $client->contact_name }}</td>
-                    <td>{{ $client->contact_email }}</td>
-                    <td>{{ $client->contact_phone }}</td>
-                    <td>
-                        <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
-                    </td>
+                    <td class="text-center" colspan="8">No clients found</td>
                 </tr>
-            @endforeach
+            @endif
         </tbody>
     </table>
-</div>
 @endsection
