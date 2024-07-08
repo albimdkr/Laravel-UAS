@@ -27,9 +27,21 @@ class DummyUsersSeeder extends Seeder
                 'password' => bcrypt('12345'),
             ],
             [
-                'name' => 'Marketing',
-                'email' => 'marketing@gmail.com',
-                'role' => 'marketing',
+                'name' => 'Engineer',
+                'email' => 'engineer@gmail.com',
+                'role' => 'engineer',
+                'password' => bcrypt('12345'),
+            ],
+            [
+                'name' => 'Audit',
+                'email' => 'audit@gmail.com',
+                'role' => 'audit',
+                'password' => bcrypt('12345'),
+            ],
+            [
+                'name' => 'user 01',
+                'email' => 'user.01@gmail.com',
+                'role' => 'user',
                 'password' => bcrypt('12345'),
             ]
         ];
