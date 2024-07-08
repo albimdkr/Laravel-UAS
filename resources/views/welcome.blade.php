@@ -69,7 +69,7 @@
                         </div>
                     </div>
     
-                    <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start"><a class="btn btn-primary px-4 me-md-2" href="login.php" role="button">Login</a>
+                    <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start"><a class="btn btn-primary px-4 me-md-2" href="{{ route('login') }} role="button">Login</a>
                         <a class="btn btn-outline-secondary px-4" href="#about" role="button">About</a>
                     </div>
                 </div>
