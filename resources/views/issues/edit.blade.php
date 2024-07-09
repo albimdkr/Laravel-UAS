@@ -9,32 +9,47 @@
         <div class="form-group">
             <label for="client_id">Client</label>
             <select class="form-control" id="client_id" name="client_id" required>
+                <option value="">Select Client</option>
                 @foreach($clients as $client)
-                    <option value="{{ $client->id }}" {{ $client->id == $issue->client_id ? 'selected' : '' }}>
-                        {{ $client->name }}
-                    </option>
+                    <option value="{{ $client->id }}" {{ $client->id == $issue->client_id ? 'selected' : '' }}>{{ $client->name }}</option>
                 @endforeach
             </select>
+            @error('client_id')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="issue">Issue</label>
-            <input type="text" class="form-control" id="issue" name="issue" value="{{ $issue->issue }}" required>
+            <input type="text" class="form-control" id="issue" name="issue" value="{{ old('issue', $issue->issue) }}" required>
+            @error('issue')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="status">Status</label>
             <select class="form-control" id="status" name="status" required>
-                <option value="open" {{ $issue->status == 'open' ? 'selected' : '' }}>Open</option>
-                <option value="in-progress" {{ $issue->status == 'in-progress' ? 'selected' : '' }}>In Progress</option>
-                <option value="closed" {{ $issue->status == 'closed' ? 'selected' : '' }}>Closed</option>
+                <option value="">Select Status</option>
+                <option value="Open" {{ $issue->status == 'Open' ? 'selected' : '' }}>Open</option>
+                <option value="In Progress" {{ $issue->status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                <option value="Closed" {{ $issue->status == 'Closed' ? 'selected' : '' }}>Closed</option>
             </select>
+            @error('status')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
-            <label for="start_date">Start Date</label>
-            <input type="date" class="form-control" id="start_date" name="start_date" value="{{ $issue->start_date }}">
+            <label for="date_start_tshoot">Start Date</label>
+            <input type="datetime-local" class="form-control" id="date_start_tshoot" name="date_start_tshoot" value="{{ old('date_start_tshoot', $issue->date_start_tshoot ? $issue->date_start_tshoot->format('Y-m-d\TH:i') : '') }}" required>
+            @error('date_start_tshoot')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
-            <label for="end_date">End Date</label>
-            <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $issue->end_date }}">
+            <label for="date_end_tshoot">End Date</label>
+            <input type="datetime-local" class="form-control" id="date_end_tshoot" name="date_end_tshoot" value="{{ old('date_end_tshoot', $issue->date_end_tshoot ? $issue->date_end_tshoot->format('Y-m-d\TH:i') : '') }}">
+            @error('date_end_tshoot')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Update Issue</button>
     </form>
