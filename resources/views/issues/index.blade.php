@@ -15,6 +15,7 @@
                     <option value="">Status</option>
                     <option value="Open" {{ request('status') == 'Open' ? 'selected' : '' }}>Open</option>
                     <option value="In Progress" {{ request('status') == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                    <option value="Pending" {{ request('status') == 'Pending' ? 'selected' : '' }}>Pending</option>
                     <option value="Closed" {{ request('status') == 'Closed' ? 'selected' : '' }}>Closed</option>
                 </select>
             </div>
@@ -26,6 +27,9 @@
             </div>
             <div class="col">
                 <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+            <div class="col p-12">
+                <button type="submit" class="btn btn-success">Print</button>
             </div>
         </div>
     </form>
@@ -46,17 +50,21 @@
             @foreach($issues as $issue)
                 <tr>
                     <td>{{ $issue->id }}</td>
-                    <td>{{ $issue->client->name ?? 'No Client Assigned' }}</td>
+                    <td>{{ $issue->client->name }}</td>
                     <td>{{ $issue->issue }}</td>
-                    <td>{{ $issue->status }}</td>
+                    <td>
+                        <span class="badge {{ $issue->status_class }}">
+                            {{ $issue->status }}
+                        </span>
+                    </td>
                     <td>{{ $issue->date_start_tshoot }}</td>
                     <td>{{ $issue->date_end_tshoot }}</td>
                     <td>
-                        <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-primary">Edit</a>
                         <form action="{{ route('issues.destroy', $issue->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>

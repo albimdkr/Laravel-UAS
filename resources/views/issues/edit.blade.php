@@ -31,6 +31,7 @@
                 <option value="">Select Status</option>
                 <option value="Open" {{ $issue->status == 'Open' ? 'selected' : '' }}>Open</option>
                 <option value="In Progress" {{ $issue->status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                <option value="Pending" {{ $issue->status == 'Pending' ? 'selected' : '' }}>Pending</option>
                 <option value="Closed" {{ $issue->status == 'Closed' ? 'selected' : '' }}>Closed</option>
             </select>
             @error('status')
