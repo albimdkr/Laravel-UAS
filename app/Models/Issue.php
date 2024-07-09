@@ -13,20 +13,26 @@ class Issue extends Model
         'client_id',
         'issue',
         'status',
-        'start_date',
-        'end_date'
+        'date_start_tshoot',
+        'date_end_tshoot',
     ];
 
-    // Relasi banyak ke satu dengan Client
+    // Convert date_start_tshoot to DateTime object
+    public function getDateStartTshootAttribute($value)
+    {
+        return $value ? \Carbon\Carbon::parse($value) : null;
+    }
+
+    // Convert date_end_tshoot to DateTime object
+    public function getDateEndTshootAttribute($value)
+    {
+        return $value ? \Carbon\Carbon::parse($value) : null;
+    }
+
+    // Define relationship to Client
     public function client()
     {
         return $this->belongsTo(Client::class);
-    }
-
-    // Relasi satu ke banyak dengan IssueHistory
-    public function issueHistories()
-    {
-        return $this->hasMany(IssueHistory::class);
     }
 }
 
