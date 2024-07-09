@@ -310,7 +310,8 @@
                 <div class="lc-block d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                     <div class="col-md-4">
                         <div editable="rich">
-                            <p class="text-muted"> © 2024 NET-TRACKER, Inc</p>
+                            {{-- <p class="text-muted"> © 2024 NET-TRACKER, Inc</p> --}}
+                            <p>Copyright © NET-TRACKER 2024 by <a href="https://albimdkr.github.io/portfolio/" target="_blank">Albi Mudakar <i class="fas fa-external-link-alt"></i></a></p>
                         </div>
                     </div>
                     {{-- <div class="col-md-4 navbar-expand-md">
