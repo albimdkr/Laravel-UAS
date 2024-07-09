@@ -46,7 +46,7 @@ class IssueController extends Controller
         $request->validate([
             'client_id' => 'required|exists:clients,id',
             'issue' => 'required|string',
-            'status' => 'required|in:Open,In Progress,Closed',
+            'status' => 'required|in:Open,In Progress,Pending,Closed',
             'date_start_tshoot' => 'required|date',
             'date_end_tshoot' => 'nullable|date|after_or_equal:date_start_tshoot',
         ]);
