@@ -5,6 +5,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductInController;
 use App\Http\Controllers\ProductOutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\IssueController;
+use App\Http\Controllers\IssueHistoryController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +52,33 @@ Route::middleware('auth')->group(function () {
         Route::get('productsOutcomePrint', [ProductOutController::class, 'productOutPrintPDF'])->name('products_out.productsOutPrint');
         Route::get('total-print', [ProductOutController::class, 'totalProductsOutPrintPDF'])->name('products_out.totalProductsOutPrint');
     });
+
+    // Task
+    Route::resource('issues', IssueController::class);
+
+    // issueHostory
+    Route::post('issues/{issue}/histories', [IssueHistoryController::class, 'store'])->name('issue_histories.store');
+    Route::delete('issue_histories/{issueHistory}', [IssueHistoryController::class, 'destroy'])->name('issue_histories.destroy');
+
+    // FailOver: Comming Soon
+    // code
+
+    // Clients
+    Route::resource('clients', ClientController::class);
+    // Route::prefix('clients')->group(function () {
+    //     Route::get('', [ClientController::class, 'index'])->name('clients.index');
+    //     Route::get('create', [ClientController::class, 'create'])->name('clients.create');
+    //     Route::post('store', [ClientController::class, 'store'])->name('clients.store');
+    //     Route::get('show/{id}', [ClientController::class, 'show'])->name('clients.show');
+    //     Route::get('edit/{id}', [ClientController::class, 'edit'])->name('clients.edit');
+    //     Route::put('edit/{id}', [ClientController::class, 'update'])->name('clients.update');
+    //     Route::delete('destroy/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
+    // });
+
+    // Documentation: Cooming Soon
+    // code
+
+    // Profile
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 });
 
