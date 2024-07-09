@@ -7,7 +7,6 @@ use App\Http\Controllers\ProductOutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\IssueController;
-use App\Http\Controllers\IssueHistoryController;
 
 
 Route::get('/', function () {
@@ -55,10 +54,6 @@ Route::middleware('auth')->group(function () {
 
     // Task
     Route::resource('issues', IssueController::class);
-
-    // issueHostory
-    Route::post('issues/{issue}/histories', [IssueHistoryController::class, 'store'])->name('issue_histories.store');
-    Route::delete('issue_histories/{issueHistory}', [IssueHistoryController::class, 'destroy'])->name('issue_histories.destroy');
 
     // FailOver: Comming Soon
     // code
