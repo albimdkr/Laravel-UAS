@@ -30,6 +30,7 @@
                 <option value="">Select Status</option>
                 <option value="Open">Open</option>
                 <option value="In Progress">In Progress</option>
+                <option value="Pending">Pending</option>
                 <option value="Closed">Closed</option>
             </select>
             @error('status')
