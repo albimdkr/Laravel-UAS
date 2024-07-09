@@ -8,9 +8,30 @@ use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $issues = Issue::with('client')->get();
+        $query = Issue::query();
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('date_start')) {
+            $query->whereDate('date_start_tshoot', '>=', $request->date_start);
+        }
+
+        if ($request->filled('date_end')) {
+            $query->whereDate('date_end_tshoot', '<=', $request->date_end);
+        }
+
+        if ($request->filled('client_name')) {
+            $query->whereHas('client', function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->client_name . '%');
+            });
+        }
+
+        $issues = $query->get();
+
         return view('issues.index', compact('issues'));
     }
 
@@ -24,11 +45,15 @@ class IssueController extends Controller
     {
         $request->validate([
             'client_id' => 'required|exists:clients,id',
-            'issue' => 'required|string|max:255',
-            'status' => 'required|string|in:open,in-progress,closed',
-            'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date',
+            'issue' => 'required|string',
+            'status' => 'required|in:Open,In Progress,Closed',
+            'date_start_tshoot' => 'required|date',
+            'date_end_tshoot' => 'nullable|date|after_or_equal:date_start_tshoot',
         ]);
+        // Set end date when status is Closed
+        if ($request->status == 'Closed') {
+            $request->merge(['date_end_tshoot' => now()]);
+        }
 
         Issue::create($request->all());
 
@@ -45,11 +70,18 @@ class IssueController extends Controller
     {
         $request->validate([
             'client_id' => 'required|exists:clients,id',
-            'issue' => 'required|string|max:255',
-            'status' => 'required|string|in:open,in-progress,closed',
-            'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date',
+            'issue' => 'required|string',
+            'status' => 'required|in:Open,In Progress,Closed',
+            'date_start_tshoot' => 'required|date',
+            'date_end_tshoot' => 'nullable|date|after_or_equal:date_start_tshoot',
         ]);
+
+        // Set end date when status is Closed
+        if ($request->status == 'Closed' && $issue->status != 'Closed') {
+            $request->merge(['date_end_tshoot' => now()]);
+        } elseif ($request->status != 'Closed') {
+            $request->merge(['date_end_tshoot' => null]);
+        }
 
         $issue->update($request->all());
 
@@ -62,4 +94,3 @@ class IssueController extends Controller
         return redirect()->route('issues.index')->with('success', 'Issue deleted successfully.');
     }
 }
-
