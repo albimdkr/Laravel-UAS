@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Issue;
 use Illuminate\Http\Request;
-use App\Models\Products_in;
-use App\Models\Products_out;
 
 class DashboardController extends Controller
 {
@@ -13,17 +12,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $totalProductsIn = Products_in::count();
-        $totalElectronicIn = Products_in::where('category', 'Electronic')->count();
-        $totalToolIn = Products_in::where('category', 'Tool')->count();
-        $totalFurnitureIn = Products_in::where('category', 'Furniture')->count();
-
-        $totalProductsOut = Products_out::count();
-        $totalElectronicOut = Products_out::where('category', 'Electronic')->count();
-        $totalToolOut = Products_out::where('category', 'Tool')->count();
-        $totalFurnitureOut = Products_out::where('category', 'Furniture')->count();
+        // $totalOpen = Issue::count();
+        $totalOpen = Issue::where('status', 'Open')->count();
+        $totalInProgress = Issue::where('status', 'In Progress')->count();
+        $totalPending = Issue::where('status', 'Pending')->count();
+        $totalClosed = Issue::where('status', 'Closed')->count();
     
-        return view('dashboard', compact('totalProductsIn', 'totalElectronicIn', 'totalToolIn', 'totalFurnitureIn', 'totalProductsOut', 'totalElectronicOut', 'totalToolOut', 'totalFurnitureOut'));
+        return view('dashboard', compact('totalOpen', 'totalInProgress', 'totalPending', 'totalClosed'));
     }
     
 
