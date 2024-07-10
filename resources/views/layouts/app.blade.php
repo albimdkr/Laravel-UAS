@@ -79,7 +79,7 @@
 
   <!-- Page level custom scripts -->
   {{-- <script src="{{ asset('admin_assets/js/demo/chart-area-demo.js') }}"></script> --}}
-  <script src="{{ asset('admin_assets/js/demo/chart-pie-demo-income.js') }}"></script>
+  <script src="{{ asset('admin_assets/js/demo/chart-pie-demo-issues.js') }}"></script>
   <script src="{{ asset('admin_assets/js/demo/chart-pie-demo-outcome.js') }}"></script>
 </body>
 </html>
