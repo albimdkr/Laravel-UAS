@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Issue;
 use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 
 class IssueController extends Controller
 {
@@ -50,6 +52,7 @@ class IssueController extends Controller
             'date_start_tshoot' => 'required|date',
             'date_end_tshoot' => 'nullable|date|after_or_equal:date_start_tshoot',
         ]);
+
         // Set end date when status is Closed
         if ($request->status == 'Closed') {
             $request->merge(['date_end_tshoot' => now()]);
@@ -92,5 +95,29 @@ class IssueController extends Controller
     {
         $issue->delete();
         return redirect()->route('issues.index')->with('success', 'Issue deleted successfully.');
+    }
+
+    // All Issue Print PDF
+    public function allIssuesPrintPDF()
+    {   
+        $user = Auth::user();
+        $totalOpen = Issue::where('status', 'Open')->count();
+        $totalInProgress = Issue::where('status', 'In Progress')->count();
+        $totalPending = Issue::where('status', 'Pending')->count();
+        $totalClosed = Issue::where('status', 'Closed')->count();
+    
+        $pdf = new Dompdf();
+        $pdf->loadHtml(view('issues.all_issue_print', [
+            'user' => $user,
+            'totalOpen' => $totalOpen,
+            'totalInProgress' => $totalInProgress,
+            'totalPending' => $totalPending,
+            'totalClosed' => $totalClosed,
+            'date' => date('Y-m-d H:i:s'),
+        ]));
+    
+        $pdf->setPaper('A4', 'landscape');
+        $pdf->render();
+        return $pdf->stream('all_issues_in_' . date('Y-m-d') . '.pdf');
     }
 }
