@@ -107,7 +107,7 @@ class IssueController extends Controller
         $totalClosed = Issue::where('status', 'Closed')->count();
     
         $pdf = new Dompdf();
-        $pdf->loadHtml(view('issues.all_issue_print', [
+        $pdf->loadHtml(view('issues.all_issues_print', [
             'user' => $user,
             'totalOpen' => $totalOpen,
             'totalInProgress' => $totalInProgress,
@@ -118,6 +118,6 @@ class IssueController extends Controller
     
         $pdf->setPaper('A4', 'landscape');
         $pdf->render();
-        return $pdf->stream('all_issues_in_' . date('Y-m-d') . '.pdf');
+        return $pdf->stream('all_issues_' . date('Y-m-d') . '.pdf');
     }
 }
