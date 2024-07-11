@@ -53,7 +53,11 @@ Route::middleware('auth')->group(function () {
     });
 
     // Task
-    Route::resource('issues', IssueController::class);
+    // Issues
+    Route::resource('issues', IssueController::class)->except(['show']);
+    Route::get('issues/print', [IssueController::class, 'allIssuesPrintPDF'])->name('issues.print');
+    
+    
 
     // FailOver: Comming Soon
     // code
