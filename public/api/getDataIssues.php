@@ -1,5 +1,16 @@
 <?php
-$connection = mysqli_connect("127.0.0.1", "root", "", "db_network");
+//dev
+$dbHost = getenv('DB_HOST');
+$dbPort = getenv('DB_PORT');
+$dbName = getenv('DB_DATABASE');
+$dbUser = getenv('DB_USERNAME');
+$dbPassword = getenv('DB_PASSWORD');
+
+// Connect DB
+$connection = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName, $dbPort);
+
+//prod
+// $connection = mysqli_connect("db4free.net", "kelompok7", "kelompok7", "db_uas_pbo2");
 
 // Issues List Status
 $totalOpen = mysqli_query($connection, "SELECT COUNT(*) FROM issues WHERE status = 'Open'");

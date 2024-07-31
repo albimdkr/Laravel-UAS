@@ -1,5 +1,12 @@
 <?php
-$connection = mysqli_connect("127.0.0.1", "root", "", "db_warehouse");
+$dbHost = getenv('DB_HOST');
+$dbPort = getenv('DB_PORT');
+$dbName = getenv('DB_DATABASE');
+$dbUser = getenv('DB_USERNAME');
+$dbPassword = getenv('DB_PASSWORD');
+
+// Connect DB
+$connection = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName, $dbPort);
 
 // Income
 $totalElectronicIn = mysqli_query($connection, "SELECT COUNT(*) FROM products_in WHERE category = 'Electronic'");
