@@ -12,10 +12,7 @@
     },
     {
       "src": "/(.*)",
-      "headers": {
-        "Location": "https://nettrackerapp.vercel.app$1"
-      },
-      "status": 301
+      "dest": "/api/index.php"
     }
   ],
   "public": true,
