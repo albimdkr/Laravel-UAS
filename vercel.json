@@ -7,19 +7,22 @@
   },
   "routes": [
     {
-      "src": "/admin_assets/(.*)",
-      "dest": "/public/admin_assets/$1"
+      "src": "/img/(.*)",
+      "dest": "/public/admin_assets/img/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/index.php"
+      "headers": {
+        "Location": "https://nettrackerapp.vercel.app$1"
+      },
+      "status": 301
     }
   ],
   "public": true,
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "true",
-    "APP_URL": "https://nettrackerapp.vercel.app/",
+    "APP_URL": "https://nettrackerapp.vercel.app",
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
@@ -35,5 +38,6 @@
     "DB_DATABASE": "db_uas_pbo2",
     "DB_USERNAME": "kelompok7",
     "DB_PASSWORD": "kelompok7"
-  }
+  },
+  "outputDirectory": "public"
 }
